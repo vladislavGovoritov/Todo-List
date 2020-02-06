@@ -10,7 +10,6 @@ const TodoList = props => {
           onToggleImportant={() => props.onToggleImportant(id)}
           onToggleDone={() => props.onToggleDone(id)}
           onDelete={() => props.onDelete(id)}
-          
         />
       </li>
     );

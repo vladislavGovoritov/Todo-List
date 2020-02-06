@@ -5,7 +5,7 @@ import SearchPanel from "./components/SearchPanel/SearchPanel";
 import AppHeader from "./components/AppHeader/AppHeader";
 import ItemStatusInfo from "./components/ItemStatusInfo/ItemStatusInfo";
 import AddItems from "./components/AddItems/AddItems";
-import './index.css'
+import "./index.css";
 class App extends React.Component {
   maxId = 100;
   state = {
@@ -34,10 +34,10 @@ class App extends React.Component {
     return [...arr.slice(0, ind), newItem, ...arr.slice(ind + 1)];
   }
 
-  onToggleImportant = (id) => {
+  onToggleImportant = id => {
     this.setState(({ todos }) => {
       return {
-        todos: this.toggleProperty(todos, id, 'important')
+        todos: this.toggleProperty(todos, id, "important")
       };
     });
   };
@@ -45,7 +45,7 @@ class App extends React.Component {
   onToggleDone = id => {
     this.setState(({ todos }) => {
       return {
-        todos: this.toggleProperty(todos, id, 'done')
+        todos: this.toggleProperty(todos, id, "done")
       };
     });
   };
@@ -61,7 +61,7 @@ class App extends React.Component {
   };
 
   addId = text => {
-    const newItem = this.createTodoItem(text)
+    const newItem = this.createTodoItem(text);
     this.setState(({ todos }) => {
       const newArray = [...todos, newItem];
       return {
@@ -107,13 +107,13 @@ class App extends React.Component {
     const { todos, term, filter } = this.state;
     const visibleItems = this.onFilter(this.onSearch(todos, term), filter);
     return (
-      <div className='main'>
+      <div className="main">
         <AppHeader toDo={todoCount} done={doneCount} />
-        <TodoList 
-        todos={visibleItems} 
-        onDelete={this.deleteId}
-        onToggleImportant={this.onToggleImportant}
-        onToggleDone={this.onToggleDone}
+        <TodoList
+          todos={visibleItems}
+          onDelete={this.deleteId}
+          onToggleImportant={this.onToggleImportant}
+          onToggleDone={this.onToggleDone}
         />
         <SearchPanel onSearchChange={this.onSearchChange} />
         <ItemStatusInfo filter={filter} onFilterChange={this.onFilterChange} />
